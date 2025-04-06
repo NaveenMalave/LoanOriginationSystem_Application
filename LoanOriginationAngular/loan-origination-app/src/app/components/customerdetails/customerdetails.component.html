@@ -1,0 +1,120 @@
+
+<div class="container mt-2">
+    <div class="card p-4 ">
+        <h3 class="text-center fw-bold">{{ 'NEW_LOAN_FORM' | translate }}</h3>
+        <hr>
+        <form (ngSubmit)="onSubmit()" *ngIf="customerdetails">
+            <fieldset>
+                <h5 class="fw-bold">{{ 'PERSONAL_DETAILS' | translate }}:</h5>
+                <div class="row g-4">
+                    <div class="col-md-6 form-group">
+                        <label for="">{{ 'FIRST_NAME' | translate }}</label>
+                        <input #firstname="ngModel" type="text" class="form-control" placeholder="{{ 'FIRST_NAME' | translate }}" 
+                               [(ngModel)]="customerdetails.firstName" id="firstname" name="firstname" required minlength="3">
+                        <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="validation-message">
+                            <div *ngIf="firstname.errors?.['required']">{{ 'FIRST_NAME_REQUIRED' | translate }}</div>
+                            <div *ngIf="firstname.errors?.['minlength']">{{ 'FIRST_NAME_MINIMUM' | translate }}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="">{{ 'LAST_NAME' | translate }}</label>
+                        <input #lastname="ngModel" type="text" class="form-control" placeholder="{{ 'LAST_NAME' | translate }}" 
+                               [(ngModel)]="customerdetails.lastName" id="lastname" name="lastname" required minlength="3">
+                        <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="validation-message">
+                            <div *ngIf="lastname.errors?.['required']">{{ 'LAST_NAME_REQUIRED' | translate }}</div>
+                            <div *ngIf="lastname.errors?.['minlength']">{{ 'LAST_NAME_MINIMUM' | translate }}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-6 form-group">
+                        <label for="">{{ 'DATE_OF_BIRTH' | translate }}</label>
+                        <input #dob="ngModel" type="date" class="form-control" placeholder="{{ 'DATE_OF_BIRTH' | translate }}" 
+                               [(ngModel)]="customerdetails.date_of_Birth" id="date_of_Birth" name="date_of_Birth" required>
+                        <div *ngIf="dob.invalid && (dob.dirty || dob.touched)" class="validation-message">
+                            <div *ngIf="dob.errors?.['required']">{{ 'DATE_REQUIRED' | translate }}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="">{{ 'EMAIL' | translate }}</label>
+                        <input #email="ngModel" type="email" class="form-control" placeholder="{{ 'EMAIL' | translate }}" 
+                               [(ngModel)]="customerdetails.email" id="email" name="email" required email>
+                        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="validation-message">
+                            <div *ngIf="email.errors?.['required']">{{ 'EMAIL_REQUIRED' | translate }}</div>
+                            <div *ngIf="email.errors?.['email']">{{ 'EMAIL_VALID' | translate }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6 form-group">
+                        <label for="">{{ 'PHONE_NUMBER' | translate }}</label>
+                        <input #phone="ngModel" type="text" class="form-control" placeholder="{{ 'PHONE_NUMBER' | translate }}" 
+                               [(ngModel)]="customerdetails.phone" id="phone" name="phone" required pattern="^[0-9]{10}$">
+                        <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="validation-message">
+                            <div *ngIf="phone.errors?.['required']">{{ 'PHONE_REQUIRED' | translate }}</div>
+                            <div *ngIf="phone.errors?.['pattern']">{{ 'PHONE_NUMBER_10_DIGIT' | translate }}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="">{{ 'ADDRESS' | translate }}</label>
+                        <input #add="ngModel" type="text" class="form-control" placeholder="{{ 'ADDRESS' | translate }}" 
+                               [(ngModel)]="customerdetails.address" id="address" name="address" required minlength="3">
+                        <div *ngIf="add.invalid && (add.dirty || add.touched)" class="validation-message">
+                            <div *ngIf="add.errors?.['required']">{{ 'ADDRESS_REQUIRED' | translate }}</div>
+                            <div *ngIf="add.errors?.['minlength']">{{ 'ADDRESS_MINIMUM' | translate }}</div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <hr>
+            <fieldset>
+                <h5 class="fw-bold">{{ 'EMPLOYMENT_DETAILS' | translate }}:</h5>
+                <div class="row g-4">
+                    <div class="col-md-6 form-group">
+                        <label for="">{{ 'COMPANY_NAME' | translate }}</label>
+                        <input #com="ngModel" type="text" class="form-control" placeholder="{{ 'COMPANY_NAME' | translate }}" 
+                               [(ngModel)]="customerdetails.company_Name" id="company_Name" name="company_Name" required minlength="3">
+                        <div *ngIf="com.invalid && (com.dirty || com.touched)" class="validation-message">
+                            <div *ngIf="com.errors?.['required']">{{ 'COMPANY_NAME_REQUIRED' | translate }}</div>
+                            <div *ngIf="com.errors?.['minlength']">{{ 'COMPANY_NAME_MINIMUM' | translate }}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="">{{ 'SALARY' | translate }}</label>
+                        <input #sal="ngModel" type="number" class="form-control" placeholder="{{'SALARY' | translate }}" 
+                               [(ngModel)]="customerdetails.salary" id="salary" name="salary" required min="1000">
+                        <div *ngIf="sal.invalid && (sal.dirty || sal.touched)" class="validation-message">
+                            <div *ngIf="sal.errors?.['required']">{{ 'SALARY_REQUIRED' | translate }}</div>
+                            <div *ngIf="sal.errors?.['min']">{{ 'SALARY_MINIMUM' | translate }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6 form-group">
+                        <label for="">{{ 'NET_INCOME' | translate }}</label>
+                        <input #net="ngModel" type="number" class="form-control" placeholder="{{ 'NET_INCOME' | translate }}" 
+                               [(ngModel)]="customerdetails.net_Income" id="net_Income" name="net_Income" required>
+                        <div *ngIf="(net.errors?.['required'] || customerdetails.net_Income > customerdetails.salary) && (net.dirty || net.touched)"
+                             class="validation-message">
+                            <div *ngIf="net.errors?.['required']">{{ 'NET_INCOME_REQUIRED' | translate }}</div>
+                            <div *ngIf="customerdetails.net_Income > customerdetails.salary">{{ 'NET_INCOME_MAXIMUM' | translate }}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="">{{ 'LAST_SALARY_DATE' | translate }}</label>
+                        <input #saldate="ngModel" type="date" class="form-control" placeholder="{{ 'LAST_SALARY_DATE' | translate }}" 
+                               [(ngModel)]="customerdetails.last_salary_date" id="last_salary_date" name="last_salary_date" required>
+                        <div *ngIf="saldate.invalid && (saldate.dirty || saldate.touched)" class="validation-message">
+                            <div *ngIf="saldate.errors?.['required']">{{ 'LAST_SALARY_DATE_REQUIRED' | translate }}</div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-warning px-4">{{ 'PROCEED' | translate }} </button>
+                <button type="button" class="btn btn-danger px-4 ms-2" (click)="onCancel()" [routerLink]="['/dashboard']">{{ 'CANCEL' | translate }}</button>
+            </div>
+        </form>
+    </div>
+</div>

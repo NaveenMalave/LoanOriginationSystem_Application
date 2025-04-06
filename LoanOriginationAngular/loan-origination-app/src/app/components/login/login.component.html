@@ -1,0 +1,19 @@
+<div class="login-container d-flex justify-content-center align-items-center ">
+    <div class="login-box">
+      <div class="text-center mb-4">
+        <img src="../../../assets/images/image 7.png" alt="Logo" width="200">
+      </div>
+      
+      <form (ngSubmit)="login()">
+        <div class="mb-4">
+          <input type="text" class="form-control" placeholder="{{'username' | translate}}" name="username" [(ngModel)]='loginData.username' required>
+        </div>
+        <div class="mb-4">
+          <input type="password" class="form-control" name="pin" placeholder="{{'mpin' | translate}}" minlength="4" maxlength="4" [(ngModel)]='loginData.pin' required>
+        </div>
+        <button class="btn btn-primary w-100">{{'login' | translate}}</button>
+      </form>
+    </div>
+  </div>
+
+   

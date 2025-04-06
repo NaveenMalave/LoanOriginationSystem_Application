@@ -1,0 +1,33 @@
+
+.card {
+    background-color: #f8f9fa;
+    max-width: 1200px;
+    margin: auto;
+}
+.validation-message {
+    color: #ff6600;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 12px;
+}
+.form-control {
+    background-color: #eee;
+    margin: 5px;
+    height: 45px;
+}
+.btn-warning {
+    background-color: orangered;
+    border: none;
+    color: white;
+}
+.btn-danger {
+    background-color: #ff4d4d;
+    border: none;
+}
+
+label{
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 5px;
+}
+

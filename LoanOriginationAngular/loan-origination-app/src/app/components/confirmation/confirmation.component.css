@@ -1,0 +1,35 @@
+
+  .custom-card {
+    background-color: #f8f9fa; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .custom-card .card-body {
+    padding: 30px; 
+  }
+  
+  .custom-card .card-title {
+    font-weight: bold; 
+  }
+  
+  .custom-card .btn {
+    transition: all 0.3s ease; 
+  }
+  
+  .custom-card .btn:hover {
+    transform: scale(1.05); 
+  }
+  
+  .text-orange {
+    color: #FF7F00 !important; 
+  }
+  
+
+  .main-content {
+    height: 100vh; 
+    padding: 20px;
+  }
+
+
+ 
+  

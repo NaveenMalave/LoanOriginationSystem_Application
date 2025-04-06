@@ -1,0 +1,114 @@
+
+body {
+    font-family: Arial, sans-serif;
+  }
+   
+   
+  .nav-link {
+    padding: 12px 15px;
+    font-size: 16px;
+    transition: 0.3s;
+  }
+   
+  .nav-link:hover,
+  .nav-link.active {
+    background-color: orange;
+    color: black !important;
+    font-weight: bold;
+  }
+   
+  .container {
+    max-width: 100%;
+  }
+   
+ 
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+  }
+   
+
+  .form-control {
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+  }
+   
+  .form-control:focus {
+    border-color: orangered;
+    box-shadow: 0 0 5px orangered;
+  }
+   
+ 
+  .btn-warning {
+    background-color: orangered;
+    border: none;
+    color: black;
+  
+  }
+   
+  .btn-warning:hover {
+    background-color: darkorange;
+  }
+   
+ 
+  .card {
+    border-radius: 8px;
+    border: 1px solid #ddd;
+  }
+   
+  .card h3 {
+    color: black;
+    font-weight: bold;
+  }
+   
+ 
+  .table {
+    border-collapse: collapse;
+  }
+   
+  .table thead {
+    background-color: orange;
+    color: white;
+  }
+   
+  .table th,
+  .table td {
+    padding: 12px;
+    text-align: center;
+  }
+   
+  .table-striped tbody tr:nth-child(odd) {
+    background-color: #f8f9fa;
+  }
+   
+ 
+   
+ 
+  @media (max-width: 768px) {
+    .container {
+      padding: 10px;
+    }
+   
+    .nav-link {
+      font-size: 14px;
+      padding: 10px;
+    }
+   
+    .form-control {
+      font-size: 14px;
+      padding: 8px;
+    }
+   
+    .btn-warning {
+      font-size: 14px;
+      padding: 8px 12px;
+    }
+   
+    .table th,
+    .table td {
+      font-size: 14px;
+      padding: 8px;
+    }
+  }
+   

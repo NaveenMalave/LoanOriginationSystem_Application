@@ -1,0 +1,23 @@
+ 
+<div class="header">
+
+    <img src="../../../assets/images/image 7.png" alt="Company Logo" class="logo" />
+     <div class="drop-btn">
+    <div class="dropdown" ngbDropdown>
+      <button class="btn btn-secondary p-2" ngbDropdownToggle><img src="{{ getFlag(selectedOption) }}" width="30" style="background-color: white;"> {{ selectedOption || 'Select Language' }}</button>
+       <div ngbDropdownMenu>
+         <button ngbDropdownItem (click)="switchLanguage('en')" (click)="selectOption('English')" ><img src="../../../assets/images/english1.png" width="20"> English</button>
+         <button ngbDropdownItem (click)="switchLanguage('fr')" (click)="selectOption('French')"> <img src="../../../assets/images/french.jpg" width="20"> French</button>
+         <button ngbDropdownItem (click)="switchLanguage('es')" (click)="selectOption('Spanish')"><img src="../../../assets/images/spanish.jpg" width="20"> Spanish</button>
+       </div>
+     </div>
+  
+    <button class="btn btn-danger logout-button" (click)="onLogout()">{{'LOGOUT' | translate}}</button>
+  </div>
+</div>
+ 
+ 
+ 
+
+ 
+ 

@@ -1,0 +1,117 @@
+<!-- <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="id">ID</label>
+      <input id="id" formControlName="id" readonly>
+    </div>
+    <div>
+      <label for="firstName">First Name</label>
+      <input id="firstName" formControlName="firstName" readonly>
+    </div>
+    <div>
+      <label for="lastName">Last Name</label>
+      <input id="lastName" formControlName="lastName" readonly>
+    </div>
+    <div>
+      <label for="date_of_Birth">Date of Birth</label>
+      <input id="date_of_Birth" formControlName="date_of_Birth" readonly>
+    </div>
+    <div>
+      <label for="phone">Phone</label>
+      <input id="phone" formControlName="phone">
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input id="email" formControlName="email">
+    </div>
+    <div>
+      <label for="address">Address</label>
+      <input id="address" formControlName="address">
+    </div>
+    <div>
+      <label for="company_Name">Company Name</label>
+      <input id="company_Name" formControlName="company_Name">
+    </div>
+    <div>
+      <label for="salary">Salary</label>
+      <input id="salary" formControlName="salary">
+    </div>
+    <div>
+      <label for="net_Income">Net Income</label>
+      <input id="net_Income" formControlName="net_Income">
+    </div>
+    <div>
+      <label for="last_salary_date">Last Salary Date</label>
+      <input id="last_salary_date" formControlName="last_salary_date">
+    </div>
+    <button type="submit">Update</button>
+  </form> -->
+
+  <div class="container mt-2">
+    <div class="card p-4">
+      <h3 class="text-center fw-bold">{{ 'NEW_LOAN_FORM' | translate }}</h3>
+      <hr>
+      <form [formGroup]="customerForm" (ngSubmit)="onSubmit()" *ngIf="customerForm">
+        <fieldset>
+          <h5 class="fw-bold">{{ 'PERSONAL_DETAILS' | translate }}:</h5>
+          <div class="row g-4">
+            <div class="col-md-6 form-group">
+              <label for="firstName">{{ 'FIRST_NAME' | translate }}</label>
+              <input type="text" class="form-control" formControlName="firstName" id="firstName" readonly>
+            </div>
+            <div class="col-md-6 form-group">
+              <label for="lastName">{{ 'LAST_NAME' | translate }}</label>
+              <input type="text" class="form-control" formControlName="lastName" id="lastName" readonly>
+            </div>
+          </div>
+          <div class="row g-4">
+            <div class="col-md-6 form-group">
+              <label for="date_of_Birth">{{ 'DATE_OF_BIRTH' | translate }}</label>
+              <input type="date" class="form-control" formControlName="date_of_Birth" id="date_of_Birth" readonly>
+            </div>
+            <div class="col-md-6 form-group">
+              <label for="email">{{ 'EMAIL' | translate }}</label>
+              <input type="email" class="form-control bg-white" formControlName="email" id="email" required>
+            </div>
+          </div>
+          <div class="row g-4">
+            <div class="col-md-6 form-group">
+              <label for="phone">{{ 'PHONE_NUMBER' | translate }}</label>
+              <input type="text" class="form-control bg-white" formControlName="phone" id="phone" required>
+            </div>
+            <div class="col-md-6 form-group">
+              <label for="address">{{ 'ADDRESS' | translate }}</label>
+              <input type="text" class="form-control bg-white" formControlName="address" id="address" required>
+            </div>
+          </div>
+        </fieldset>
+        <hr>
+        <fieldset>
+          <h5 class="fw-bold">{{ 'EMPLOYMENT_DETAILS' | translate }}:</h5>
+          <div class="row g-4">
+            <div class="col-md-6 form-group">
+              <label for="company_Name">{{ 'COMPANY_NAME' | translate }}</label>
+              <input type="text" class="form-control bg-white" formControlName="company_Name" id="company_Name" required>
+            </div>
+            <div class="col-md-6 form-group">
+              <label for="salary">{{ 'SALARY' | translate }}</label>
+              <input type="number" class="form-control bg-white" formControlName="salary" id="salary" required>
+            </div>
+          </div>
+          <div class="row g-4">
+            <div class="col-md-6 form-group">
+              <label for="net_Income">{{ 'NET_INCOME' | translate }}</label>
+              <input type="number" class="form-control bg-white" formControlName="net_Income" id="net_Income" required>
+            </div>
+            <div class="col-md-6 form-group">
+              <label for="last_salary_date">{{ 'LAST_SALARY_DATE' | translate }}</label>
+              <input type="date" class="form-control bg-white" formControlName="last_salary_date" id="last_salary_date" required>
+            </div>
+          </div>
+        </fieldset>
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-warning px-4">{{ 'UPDATE' | translate }}</button>
+          <button type="button" class="btn btn-danger px-4 ms-2" (click)="onCancel()">{{ 'CONTINUE' | translate }}</button>
+        </div>
+      </form>
+    </div>
+  </div>

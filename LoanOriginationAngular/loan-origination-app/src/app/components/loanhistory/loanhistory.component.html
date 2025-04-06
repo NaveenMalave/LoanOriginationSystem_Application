@@ -1,0 +1,76 @@
+<div class="container-fluid mt-4 bg-light card">
+  <h1>{{'loan-history' | translate}}</h1>
+  <hr>
+  <div class="input-group mb-3">
+    <label for="customerId" class="mt-5 fw-bold">{{'CUSTOMER_ID' | translate}} : </label>
+    <div class="row">
+      <div class="col-8">
+    <input type="number" id="customerId" class="form-control ms-2 mt-5 " [(ngModel)]="customerId" placeholder="Enter Customer ID">
+  </div>
+  <div class="col-4">
+    <button style="background-color: #ff6600;" class="btn  mt-5 text-white " (click)="getLoanHistory()">{{'search' | translate}}</button>
+  </div>
+  </div>
+  </div>
+
+  
+  <div *ngIf="hasSearched && loanHistory.length === 0" class="mt-4 text-center text-danger">
+    <h4>{{'NO_LOAN' | translate}}</h4>
+  </div>
+
+ 
+  <div *ngIf="hasSearched && loanHistory.length > 0" class="mt-4">
+    <h4 class="text-white">{{'LOAN_DETAILS' | translate}}</h4>
+    <table class="table table-striped text-light">
+      <thead class="table-dark">
+        <tr>
+          <th>{{'LOAN_ID' | translate}}</th>
+          <th>{{'LOAN_STATUS' | translate}}</th>
+          <th>{{'TOTAL_AMOUNT' | translate}}</th>
+          <th>{{'REMAINING_BALANCE' | translate}}</th>
+          <th>{{'DUE_DATE' | translate}}</th>
+          <th>{{'ACTION' | translate}}</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let loan of loanHistory" >
+        <tr class="table-dark">
+          <td>{{ loan.loanId }}</td>
+          <td>{{ loan.status }}</td>
+          <td>{{ loan.loanAmount }}</td>
+          <td>{{loan.remainingBalance}}</td>
+          <td>{{ loan.dueDate ? (loan.dueDate | date: 'dd/MM/yyyy') : 'NA' }}</td>
+          <td>
+            <button class="btn" style="background-color: #ff6600;" (click)="getTransactionHistory(loan.loanId)">
+              {{selectedLoanId === loan.loanId ? 'Hide Transation' : 'View transaction' }}
+            </button>
+          </td>
+        </tr>
+
+       
+        <ng-container *ngIf="selectedLoanId === loan.loanId">
+          <ng-container *ngIf="transactions[loan.loanId] && transactions[loan.loanId].length > 0">
+            <tr class="table-success">
+              <th colspan="1">{{'TRANSACTION_ID' | translate}}</th>
+              <th colspan="1">{{'AMOUNT' | translate}}</th>
+              <th colspan="4">{{'DATE' | translate}}</th>
+            </tr>
+            <tr *ngFor="let transaction of transactions[loan.loanId]" class="table-success">
+             
+                <td colspan="1"> {{ transaction.transactionId }}</td>
+                <td colspan="1"> {{ transaction.amountPaid }}  </td> 
+                <td colspan="4"> {{ transaction.dateOfTransaction | date: 'dd/MM/yyyy' : 'NA'}} </td>
+              
+            </tr>
+          </ng-container>
+          <ng-container *ngIf="transactions[loan.loanId] && transactions[loan.loanId].length === 0">
+            <tr class="table-danger">
+              <td colspan="6" class="text-center">
+                {{'NO_TRANSACTION_FOUND' | translate}}
+              </td>
+            </tr>
+          </ng-container>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</div>

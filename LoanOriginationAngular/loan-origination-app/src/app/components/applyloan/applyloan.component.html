@@ -1,0 +1,119 @@
+
+<div class="container text-white" style="background-color: rgba(211, 211, 211, 0.429); height: 100vh;">
+  <div *ngIf="!showLoanForm">
+    <div *ngIf="net_income">
+      <p style="color: black; font-weight: bold; font-size: 1.5rem;">{{'DEAR' | translate}}, <span style="color: #ff6600;">{{firstname}} {{lastname}}</span></p>
+      <p style="color: black; font-weight: bold;">{{'AS_PER' | translate}} <strong style="color: #ff6600">$ {{ suggestedLoanAmount }}</strong>.</p>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="form-group bg-white text-dark p-4 f1">
+            <div class="row">
+              <div class="col-md-8">
+            <label for="loan_amount" style="font-weight: bold;">{{'HOW_MUCH' | translate}}</label>
+          </div>
+          <div class="col-md-4">
+            <h4 class="text-success" style="background-color: rgba(211, 211, 211, 0.384); font-weight: bolder; border-radius: 5px; padding: 5px"> $ {{ loan_amount }}  /-</h4>
+          </div>
+          </div>
+          <div class="row">
+            <input type="range" id="loan_amount" class="form-range"  [min]="suggestedLoanAmount" [max]="maxLoanAmount" [(ngModel)]="loan_amount" (input)="calculateEMI()">
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <p style="font-weight: bold; color: red;">min: $ {{suggestedLoanAmount}}</p>
+            <p style="font-weight: bold; color: green;">max: $ {{maxLoanAmount}}</p>
+          </div>
+          </div>
+          <div class="form-group bg-white text-dark p-4 mt-5 f1">
+            <div class="row">
+              <div class="col-md-8">
+            <label for="loan_tenure" style="font-weight: bold;">{{'HOW_TENURE' | translate}}</label>
+          </div>
+          <div class="col-md-4">
+            <h4 style="background-color: rgba(211, 211, 211, 0.384); font-weight: bolder;color:#ff6600; border-radius:5px; padding: 5px"> {{ loan_tenure }} {{'MONTHS' | translate}}</h4>
+          </div>
+          </div>
+          <div class="row">
+            <input type="range" id="loan_tenure" class="form-range" min="1" max="60" [(ngModel)]="loan_tenure" (input)="calculateEMI()">
+          </div>
+          </div>
+         
+        </div>
+        <div class="col-md-4 ">
+          <div class="emi-display bg-white text-dark p-3 text-center">
+            <p>{{'YOU_WILL_PAY' | translate}}</p>
+            <h3 style="color:#ff6600"><strong>${{ emi }}</strong></h3>
+            <p>{{'PER_MONTH' | translate}}</p>
+            <p>{{ rate_of_intrest }}% {{'INTREST_APPLIED' | translate}}.</p>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-6">
+        <button class="btn btn-orange mt-2 p-2" (click)="proceed()">{{'PROCEED_WITH' | translate}}: ${{ loan_amount }}</button>
+      </div>
+      <div class="col-6">
+        <button class="btn btn-danger mt-2 p-2" [routerLink]="['/dashboard']">{{'CANCEL' | translate}}</button>
+      </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showLoanForm">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>{{'FIELD' | translate}}</th>
+          <th>{{'VALUE' | translate}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{'CUSTOMER_ID' | translate}}</td>
+          <td>{{ customer_id }}</td>
+        </tr>
+        <tr>
+          <td>{{'SELECTED_AMOUNT' | translate}}</td>
+          <td>${{ loan_amount }}</td>
+        </tr>
+        <tr>
+          <td>{{'SELECTED_TENURE' | translate}}</td>
+          <td>{{ loan_tenure }} months</td>
+        </tr>
+        <tr>
+          <td>{{'YOU_WILL_PAY' | translate}}</td>
+          <td>${{ emi }} per month</td>
+        </tr>
+        <tr>
+          <td>{{'INTREST_APPLIED' | translate}}</td>
+          <td>{{ rate_of_intrest }}%</td>
+        </tr>
+        <tr>
+          <td>{{'LOAN_STATUS' | translate}}</td>
+          <td>{{ loan_status }}</td>
+        </tr>
+        <tr>
+          <td>{{'DATE_OF_REQUEST' | translate}}</td>
+          <td>{{ date_of_request }}</td>
+
+        </tr>
+        <tr>
+          <td>{{'EMPLOYEE_ID' | translate}}</td>
+          <td>{{employee_id}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row">
+      <div class="col-6">
+    <button class="btn btn-orange mt-2" (click)="submitLoan()">{{'SUBMIT_LOAN' | translate}}</button>
+  </div>
+  <div class="col-6">
+    <button class="btn btn-secondary mt-2" [routerLink]="['/dashboard']">{{'CANCEL' | translate}}</button>
+  </div>
+  </div>
+  </div>
+</div>
+
+
+
+ 
+
+

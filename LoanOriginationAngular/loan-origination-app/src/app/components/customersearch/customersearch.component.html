@@ -1,0 +1,124 @@
+
+
+  <div class="container-fluid text-white p-0">
+  
+   
+    
+      <div class="container bg-white text-dark" style="flex-grow: 1;">
+
+   
+       
+        <div class="card p-4 my-3 shadow-sm">
+          <h3 class="mb-3">{{'find-customer' | translate}}</h3>
+          <form #f1="ngForm">
+            <div class="row g-2 mb-3">
+              <div class="col-md">
+                <input
+                  #fn="ngModel"
+                  type="text"
+                  class="form-control"
+                  placeholder="{{'FIRST_NAME' | translate}}"
+                  [(ngModel)]="firstName"
+                  id="firstName"
+                  name="firstName"
+                  required
+                  minlength="3"
+                  maxlength="15"
+                />
+                <div *ngIf="fn.invalid && (fn.dirty || fn.touched)" class="text-danger small">
+                  <div *ngIf="fn.errors?.['required']">{{'FIRST_NAME_REQUIRED' | translate}}</div>
+                  <div *ngIf="fn.errors?.['minlength']">{{'FIRST_NAME_MINIMUM' | translate}}</div>
+                </div>
+              </div>
+   
+              <div class="col-md">
+                <input
+                  #ln="ngModel"
+                  type="text"
+                  class="form-control"
+                  placeholder="{{'LAST_NAME' | translate}}"
+                  [(ngModel)]="lastName"
+                  id="lastName"
+                  name="lastName"
+                  required
+                  minlength="3"
+                  maxlength="15"
+                />
+                <div *ngIf="ln.invalid && (ln.dirty || ln.touched)" class="text-danger small">
+                  <div *ngIf="ln.errors?.['required']">{{'LAST_NAME_REQUIRED' | translate}}</div>
+                  <div *ngIf="ln.errors?.['minlength']">{{'LAST_NAME_MINIMUM' | translate}}</div>
+                </div>
+              </div>
+   
+              <div class="col-md">
+                <input
+                  #dob="ngModel"
+                  type="date"
+                  class="form-control"
+                  [(ngModel)]="dateOfBirth"
+                  id="dateOfBirth"
+                  name="dateOfBirth"
+                  required
+                />
+                <div *ngIf="dob.invalid && (dob.dirty || dob.touched)" class="text-danger small">
+                  <div *ngIf="dob.errors?.['required']">{{'DATE_REQUIRED' | translate}}</div>
+                </div>
+              </div>
+            </div>
+   
+            <div class="d-flex justify-content-center">
+              <button class="btn text-white btn-warning" [disabled]="f1.invalid" (click)="searchCustomers()">
+                {{'find-customer' | translate}}
+              </button>
+            </div>
+          </form>
+        </div>
+   
+
+        <div *ngIf="totalResults > 0" class="card p-4 my-3 shadow-sm">
+          <h3>{{'TOTAL' | translate}} (<b>{{ totalResults }}</b>) {{'RESULT_FOUND' | translate}}</h3>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr class="bg-orange text-white">
+                  <th>ID</th>
+                  <th>{{'FIRST_NAME' | translate}}</th>
+                  <th>{{'LAST_NAME' | translate}}</th>
+                  <th>{{'DATE_OF_BIRTH' | translate}}</th>
+                  <th>{{'PHONE_NUMBER' | translate}}</th>
+                  <th>{{'EMAIL' | translate}}</th>
+                  <th>{{'ADDRESS' | translate}}</th>
+                  <th>{{'COMPANY_NAME' | translate}}</th>
+                  <th>{{'ACTION' | translate}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let customer of customers">
+                    <td>{{ customer.id }}</td>
+                    <td>{{ customer.firstName }}</td>
+                    <td>{{ customer.lastName }}</td>
+                    <td>{{ customer.date_of_Birth }}</td>
+                    <td>{{ customer.phone }}</td>
+                    <td>{{ customer.email }}</td>
+                    <td>{{ customer.address }}</td>
+                    <td>{{ customer.company_Name }}</td>
+                  <td>
+                    <button class="btn btn-warning text-white" [routerLink]="['/existingdetails', customer.id]">
+                      {{'apply-now' | translate}}
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+   
+        <!-- No Customer Found -->
+        <div *ngIf="totalResults === 0" class="text-center my-4" [hidden]="isHidden">
+          <h3 class="text-danger">{{'NO_CUSTOMER_FOUND' | translate}}</h3>
+          <button class="btn btn-warning" (click)="addCustomer()">{{'ADD_CUSTOMER' | translate}}</button>
+        </div>
+      </div>
+    </div>
+  
+ 

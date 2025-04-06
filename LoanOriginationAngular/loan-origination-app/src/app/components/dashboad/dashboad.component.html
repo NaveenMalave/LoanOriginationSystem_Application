@@ -1,0 +1,38 @@
+
+  <div class="dashboard-container">
+    <div class="main-content">
+      <div class="welcome-box">
+        <div class="p-2"><img src = "../../../assets/images/profile.png" height="75px" width="75px" style="border-radius: 10px;"></div>
+        <h3>{{'welcome' | translate}}<span class="highlight"> {{firstname}} {{lastname}}</span>,</h3>
+        <p>{{'assist' | translate}}</p>
+      </div>
+   
+      <h4 class="services-title">{{'active-service' | translate}}</h4>
+      <div class="services">
+        <div class="service-card">
+          <div class="p-2"><img src = "../../../assets/images/loan1.webp" height="60px" width="60px" style="border-radius: 10px;"></div>
+          <h5>{{'apply-for-loan' | translate}}</h5>
+          <p>{{'loan-card' | translate}}</p>
+          <button class="btn service-btn" [routerLink]="['/confirmation']">{{'apply-now' | translate}}</button>
+        </div>
+   
+        <div class="service-card">
+            <div class="p-2"><img src = "../../../assets/images/search.jpg" height="60px" width="60px" style="border-radius: 10px;"></div>
+          <h5>{{'find-customer' | translate}}</h5>
+          <p>{{'find-card' | translate}}</p>
+          <button class="btn service-btn" [routerLink]="['/customer-search']">{{'search-customer' | translate}}</button>
+        </div>
+   
+        <div class="service-card">
+            <div class="p-2"><img src = "../../../assets/images/history.jpg" height="60px" width="60px" style="border-radius: 10px;"></div>
+          <h5>{{'loan-history' | translate}}</h5>
+          <p>{{'history-card' | translate}}</p>
+          <button class="btn service-btn" [routerLink]="['/loan-history']">{{'check-history' | translate}}</button>
+        </div>
+      </div>
+   
+    </div>
+  </div>
+ 
+ 
+ 
